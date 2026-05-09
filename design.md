@@ -1,149 +1,95 @@
 # cmon Design Guide
 
-## 1. Color Palette
-
-| Token | Hex | Usage |
-
-|---|---:|---|
-
-| Primary | `#534AB7` | 선택된 네비게이션 표시 색 |
-
-| Primary Lt | `#7F77DD` | 홈 화면 상단 색 |
-
-| Primary Bg | `#EEEDFE` | 홈 화면 배경 색 |
-
-| Success | `#1D9E75` | D-7 이상 |
-
-| Success Bg | `#DCFCE7` | 바로 지원 가능한 상태 색 |
-
-| D-day | `#EF9F27` | D-3 ~ D-7 색 |
-
-| D-day Bg | `#FFEDD4` | 보완이 필요한 상태 색 |
-
-| Muted | TBD | 보조 텍스트 색 |
-
-| Dark Bg | TBD | 어두운 배경 색 |
+## 1) 기본 원칙
+- Next.js App Router + TypeScript + Tailwind CSS 기준
+- 모바일 우선 구현
+- 임의 값 남발 금지, 아래 토큰/스케일 우선 사용
 
 ---
 
-## 2. Typography
+## 2) Color Tokens
+
+| Token | Hex | 용도 |
+|---|---:|---|
+| Primary | `#534AB7` | 주요 액션, 활성 상태 |
+| Primary Light | `#7F77DD` | 보조 강조, 활성 배경 |
+| Primary Background | `#EEEDFE` | 앱 기본 배경, 서브 영역 |
+| Success | `#1D9E75` | 성공/긍정 상태 |
+| Success Background | `#DCFCE7` | 성공 상태 배경 |
+| Warning | `#EF9F27` | 주의/마감 임박 |
+| Warning Background | `#FFEDD4` | 주의 상태 배경 |
+| Alert | `#F2A6A4` | 경고 강조 상태 |
+| Urgent | `#E74340` | 임박/긴급 상태 |
+| Surface | `#FFFFFF` | 카드/패널 배경 |
+| Border | `rgba(0,0,0,0.1)` | 기본 경계선 |
+| Text Primary | `#1e2939` | 주요 텍스트 |
+| Text Secondary | `#6a7282` | 보조 텍스트 |
+
+---
+
+## 3) Typography
 
 ### Font Weight
+- Regular: `400`
+- Medium: `500`
+- SemiBold: `600`
+- Bold: `700`
+- Black: `900`
 
-사용하는 font-weight는 아래 5개만 사용한다.
-
-| Name | Weight |
-
-|---|---:|
-
-| Regular | 400 |
-
-| Medium | 500 |
-
-| SemiBold | 600 |
-
-| Bold | 700 |
-
-| Black | 900 |
-
----
-
-## 3. Font Scale
-
-기본 본문은 `16px` 기준으로 사용한다.  
-
-모바일에서도 최소 텍스트는 `12px` 이상을 권장한다.
+### Type Scale
 
 | Name | Size | Line Height | Weight |
-
 |---|---:|---:|---|
-
 | Caption | `10px` | auto | Regular |
-
 | Detail | `12px` | auto | Regular |
-
 | Body2 | `14px` | `16px` | Regular |
-
 | Body2 Strong | `14px` | `16px` | SemiBold |
-
 | Body1 | `16px` | `20px` | Regular |
-
 | Body1 Medium | `16px` | `20px` | Medium |
-
 | Body1 Strong | `16px` | `20px` | SemiBold |
-
 | SubHead | `18px` | `20px` | Regular |
-
 | SubHead Strong | `18px` | `20px` | SemiBold |
-
 | Head | `20px` | `24px` | Medium |
-
 | Head Strong | `20px` | `24px` | SemiBold |
-
 | Title2 | `24px` | `28px` | Bold |
-
 | Title1 | `36px` | `44px` | Bold |
 
 ---
 
-## 4. Border Radius
+## 4) Border Radius
 
-기본 모서리 둥글기는 `14px`를 많이 사용한다.
-
-| Token | Value | Usage |
-
-|---|---:|---|
-
-| radius-xs | `4px` | 작은 배지, 태그 |
-
-| radius-sm | `8px` | 작은 버튼, 칩 |
-
-| radius-md | `12px` | 입력창, 작은 카드 |
-
-| radius-base | `14px` | 기본 카드, 버튼 |
-
-| radius-lg | `16px` | 큰 카드 |
-
-| radius-xl | `24px` | 강조 카드, 큰 영역 |
-
-| radius-full | `30px` | pill 버튼, 둥근 배지 |
+| Token | Value |
+|---|---:|
+| radius-xs | `4px` |
+| radius-sm | `8px` |
+| radius-md | `12px` |
+| radius-base | `14px` |
+| radius-lg | `16px` |
+| radius-xl | `24px` |
+| radius-full | `9999px` |
 
 ---
 
-## 5. Component Rules
+## 5) Button Guidelines
 
-### Button
-
-- 기본 버튼 높이는 `48px` 권장
 - 주요 버튼 배경은 `Primary`
 - 버튼 텍스트는 흰색 사용
 - 기본 radius는 `14px`
 - font-weight는 `SemiBold`
 
-### Card
+---
 
-- 기본 radius는 `14px`
-- 내부 padding은 `16px` 권장
-- 카드 간격은 `12px ~ 16px` 기준
-- 중요한 카드나 홈 상단 카드는 `Primary Bg` 계열 사용 가능
+## 6) Spacing Guidelines
 
-### Badge
-
-- D-7 이상: `Success` / `Success Bg`
-- D-3 ~ D-7: `D-day` / `D-day Bg`
-- radius는 `4px` 또는 `8px` 사용
+- 화면 기본 좌우 여백: `16px`
+- 카드 내부 패딩: `16px`
+- 요소 간 간격: `8px`, `12px`, `16px` 우선 사용
 
 ---
 
-## 6. Cursor Coding Rules
+## 7) 적용 규칙
 
-Cursor는 UI 코드를 생성할 때 반드시 이 문서를 우선 참고한다.
-
-- Next.js App Router 기준으로 작성한다.
-- TypeScript를 사용한다.
-- Tailwind CSS를 사용한다.
-- 색상은 위 Color Palette 기준으로 사용한다.
-- font-size, line-height, font-weight는 Typography 기준을 따른다.
-- 컴포넌트는 재사용 가능하게 분리한다.
-- 모바일 화면 기준으로 먼저 구현한다.
-- 임의의 색상, 임의의 font-size, 임의의 radius를 남발하지 않는다.
+- 색상은 Color Tokens 내에서만 선택
+- 폰트 크기/줄간격/굵기는 Typography 표 기준
+- radius는 Border Radius 토큰 기준
+- 새 컴포넌트도 동일 규칙 재사용

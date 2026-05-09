@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 type Period = "today" | "week" | "month";
+type MidSectionView = "schedule" | "quest";
 
 const scheduleByPeriod: Record<Period, { title: string; xp: string; tag: string; ago: string; href: string }[]> = {
   today: [
@@ -54,6 +55,37 @@ const jobSections = [
         image:
           "https://logo.clearbit.com/naver.com",
       },
+      {
+        company: "카카오",
+        title: "백엔드 개발자 인턴",
+        dday: "D-14",
+        badge: "모집중",
+        badgeColor: "bg-[#1D9E75]",
+        alert: "서류 마감 임박",
+        alertColor: "bg-[#FFEDD4] text-[#EF9F27]",
+        image:
+          "https://logo.clearbit.com/kakaocorp.com",
+      },
+      {
+        company: "쿠팡",
+        title: "프로덕트 매니저(신입)",
+        dday: "D-21",
+        badge: "모집중",
+        badgeColor: "bg-[#1D9E75]",
+        image:
+          "https://logo.clearbit.com/coupang.com",
+      },
+      {
+        company: "라인플러스",
+        title: "데이터 엔지니어",
+        dday: "D-11",
+        badge: "모집중",
+        badgeColor: "bg-[#1D9E75]",
+        alert: "추천 직무",
+        alertColor: "bg-[#EEEDFE] text-[#534AB7]",
+        image:
+          "https://logo.clearbit.com/linepluscorp.com",
+      },
     ],
   },
   {
@@ -81,12 +113,42 @@ const jobSections = [
         image:
           "https://logo.clearbit.com/fastcampus.co.kr",
       },
+      {
+        company: "멋쟁이사자처럼",
+        title: "프론트엔드 스쿨 5기",
+        dday: "D-19",
+        badge: "모집중",
+        badgeColor: "bg-[#1D9E75]",
+        image:
+          "https://logo.clearbit.com/likelion.net",
+      },
+      {
+        company: "스마일게이트",
+        title: "게임 기획 공모전 2026",
+        dday: "D-27",
+        badge: "모집중",
+        badgeColor: "bg-[#1D9E75]",
+        alert: "상금 500만원",
+        alertColor: "bg-[#FFEDD4] text-[#EF9F27]",
+        image:
+          "https://logo.clearbit.com/smilegate.com",
+      },
+      {
+        company: "원티드랩",
+        title: "AI 커리어 점프 캠프",
+        dday: "D-8",
+        badge: "모집중",
+        badgeColor: "bg-[#1D9E75]",
+        image:
+          "https://logo.clearbit.com/wantedlab.com",
+      },
     ],
   },
   {
     title: "자격증·어학",
     icon: "⌬",
     href: "/jobs/license",
+    plainBadge: true,
     cards: [
       {
         company: "Q-Net",
@@ -108,6 +170,87 @@ const jobSections = [
         image:
           "https://logo.clearbit.com/ets.org",
       },
+      {
+        company: "한국사능력검정시험",
+        title: "한국사능력검정시험(심화)",
+        dday: "D-30",
+        badge: "시험",
+        badgeColor: "bg-[#534AB7]",
+        image:
+          "https://logo.clearbit.com/historyexam.go.kr",
+      },
+      {
+        company: "대한상공회의소",
+        title: "컴퓨터활용능력 1급",
+        dday: "D-18",
+        badge: "자격증",
+        badgeColor: "bg-[#534AB7]",
+        alert: "실무 활용도 높음",
+        alertColor: "bg-[#EEEDFE] text-[#534AB7]",
+        image:
+          "https://logo.clearbit.com/korcham.net",
+      },
+      {
+        company: "JLPT",
+        title: "JLPT N2 정기시험",
+        dday: "D-41",
+        badge: "어학",
+        badgeColor: "bg-[#534AB7]",
+        image:
+          "https://logo.clearbit.com/jlpt.jp",
+      },
+    ],
+  },
+  {
+    title: "정부 정책",
+    icon: "◻",
+    href: "/jobs/policy",
+    plainBadge: true,
+    cards: [
+      {
+        company: "고용노동부",
+        title: "국민취업지원제도",
+        dday: "D-23",
+        badge: "금융",
+        badgeColor: "bg-[#534AB7]",
+        alert: "지금 신청 가능해!",
+        alertColor: "bg-[#d4f2df] text-[#0a8f49]",
+        image: "https://logo.clearbit.com/moel.go.kr",
+      },
+      {
+        company: "국토교통부",
+        title: "청년 전세자금 대출 지원",
+        dday: "D-35",
+        badge: "주거",
+        badgeColor: "bg-[#534AB7]",
+        image: "https://logo.clearbit.com/molit.go.kr",
+      },
+      {
+        company: "중소벤처기업부",
+        title: "청년창업사관학교 입교생 모집",
+        dday: "D-16",
+        badge: "창업",
+        badgeColor: "bg-[#534AB7]",
+        alert: "멘토링/공간 지원",
+        alertColor: "bg-[#d4f2df] text-[#0a8f49]",
+        image: "https://logo.clearbit.com/mss.go.kr",
+      },
+      {
+        company: "서울시",
+        title: "청년 월세 지원사업 2차",
+        dday: "D-29",
+        badge: "주거",
+        badgeColor: "bg-[#534AB7]",
+        image: "https://logo.clearbit.com/seoul.go.kr",
+      },
+      {
+        company: "금융위원회",
+        title: "청년도약계좌 가입 지원",
+        dday: "D-13",
+        badge: "금융",
+        badgeColor: "bg-[#534AB7]",
+        image: "https://logo.clearbit.com/fsc.go.kr",
+      },
     ],
   },
 ];
@@ -125,17 +268,100 @@ const hotPosts = [
   { title: "면접 탈락 후 재지원 성공", views: 5, comments: 0 },
 ];
 
-const bottomNav = [
-  { label: "달력", icon: "📅", href: "/calendar" },
-  { label: "공고", icon: "📋", href: "/jobs" },
-  { label: "홈", icon: "🏠", href: "/" },
-  { label: "AI 커리어", icon: "✨", href: "/ai-career" },
-  { label: "커뮤니티", icon: "💬", href: "/community" },
+const topUsers = [
+  {
+    name: "김철수",
+    xp: 1200,
+    rank: 1,
+    image: "https://api.dicebear.com/9.x/thumbs/svg?seed=phoenix-1&backgroundColor=fff7e6",
+  },
+  {
+    name: "이영희",
+    xp: 1000,
+    rank: 2,
+    image: "https://api.dicebear.com/9.x/thumbs/svg?seed=phoenix-2&backgroundColor=fff7e6",
+  },
+  {
+    name: "박민수",
+    xp: 950,
+    rank: 3,
+    image: "https://api.dicebear.com/9.x/thumbs/svg?seed=phoenix-3&backgroundColor=fff7e6",
+  },
+  {
+    name: "최수진",
+    xp: 880,
+    rank: 4,
+    image: "https://api.dicebear.com/9.x/thumbs/svg?seed=phoenix-4&backgroundColor=fff7e6",
+  },
+  {
+    name: "정다은",
+    xp: 830,
+    rank: 5,
+    image: "https://api.dicebear.com/9.x/thumbs/svg?seed=phoenix-5&backgroundColor=fff7e6",
+  },
+];
+
+type BottomTab = "calendar" | "jobs" | "home" | "ai-career" | "community";
+
+const bottomNav: { id: BottomTab; label: string }[] = [
+  { id: "calendar", label: "달력" },
+  { id: "jobs", label: "공고" },
+  { id: "home", label: "홈" },
+  { id: "ai-career", label: "AI 커리어" },
+  { id: "community", label: "커뮤니티" },
 ];
 
 export default function HomePage() {
   const [period, setPeriod] = useState<Period>("today");
+  const [midSectionView, setMidSectionView] = useState<MidSectionView>("schedule");
+  const [selectedTab, setSelectedTab] = useState<BottomTab>("home");
   const scheduleCards = useMemo(() => scheduleByPeriod[period], [period]);
+
+  const renderBottomTabIcon = (tab: BottomTab) => {
+    if (tab === "calendar") {
+      return (
+        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="4" width="18" height="17" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+      );
+    }
+    if (tab === "jobs") {
+      return (
+        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="6" width="18" height="15" rx="2" />
+          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+          <line x1="3" y1="13" x2="21" y2="13" />
+        </svg>
+      );
+    }
+    if (tab === "home") {
+      return (
+        <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 11.5 12 4l9 7.5" />
+          <path d="M5.5 10.5V20h13V10.5" />
+          <rect x="10" y="13" width="4" height="7" rx="1" />
+        </svg>
+      );
+    }
+    if (tab === "ai-career") {
+      return (
+        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+      );
+    }
+    return (
+      <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="7" r="3" />
+        <path d="M3 20a6 6 0 0 1 12 0" />
+        <path d="M17 11a3 3 0 1 0 0-6" />
+        <path d="M21 20a4.5 4.5 0 0 0-4.5-4.5" />
+      </svg>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-[#EEEDFE] px-3 py-5 sm:px-6">
@@ -205,49 +431,72 @@ export default function HomePage() {
         </section>
 
         <section className="px-4 pb-4">
-          <div className="mb-2 flex justify-center">
-            <div className="inline-flex rounded-full border border-black/20 bg-[#f3f3f3] p-1">
+          <div className="mb-3 flex items-center gap-2">
+            <div className="grid flex-1 grid-cols-3 gap-1 rounded-full border border-black/20 bg-[#f3f3f3] p-1">
               <button
                 type="button"
-                onClick={() => setPeriod("today")}
-                className={`rounded-full px-5 py-1.5 text-[18px] leading-5 font-semibold ${period === "today" ? "bg-[#7F77DD] text-white" : "text-[#666]"}`}
+                onClick={() => {
+                  setPeriod("today");
+                  setMidSectionView("schedule");
+                }}
+                className={`w-full whitespace-nowrap rounded-full px-3 py-1.5 text-[16px] leading-5 font-semibold ${period === "today" && midSectionView === "schedule" ? "bg-[#7F77DD] text-white" : "text-[#666]"}`}
               >
                 오늘
               </button>
               <button
                 type="button"
-                onClick={() => setPeriod("week")}
-                className={`rounded-full px-4 py-1.5 text-[18px] leading-5 font-semibold ${period === "week" ? "bg-[#7F77DD] text-white" : "text-[#666]"}`}
+                onClick={() => {
+                  setPeriod("week");
+                  setMidSectionView("schedule");
+                }}
+                className={`w-full whitespace-nowrap rounded-full px-3 py-1.5 text-[16px] leading-5 font-semibold ${period === "week" && midSectionView === "schedule" ? "bg-[#7F77DD] text-white" : "text-[#666]"}`}
               >
                 이번 주
               </button>
               <button
                 type="button"
-                onClick={() => setPeriod("month")}
-                className={`rounded-full px-4 py-1.5 text-[18px] leading-5 font-semibold ${period === "month" ? "bg-[#7F77DD] text-white" : "text-[#666]"}`}
+                onClick={() => {
+                  setPeriod("month");
+                  setMidSectionView("schedule");
+                }}
+                className={`w-full whitespace-nowrap rounded-full px-3 py-1.5 text-[16px] leading-5 font-semibold ${period === "month" && midSectionView === "schedule" ? "bg-[#7F77DD] text-white" : "text-[#666]"}`}
               >
                 이번 달
               </button>
             </div>
+            <button
+              type="button"
+              onClick={() => setMidSectionView("quest")}
+              className={`h-[42px] whitespace-nowrap rounded-full border border-black/20 px-4 text-[16px] leading-5 font-semibold ${
+                midSectionView === "quest" ? "bg-[#7F77DD] text-white" : "bg-[#f3f3f3] text-[#666]"
+              }`}
+            >
+              Daily Quest
+            </button>
           </div>
-          <div className="grid grid-cols-2 gap-3 rounded-[14px] border border-black/10 bg-white p-3">
-            <div className="border-r border-zinc-200 pr-2">
+          {midSectionView === "schedule" ? (
+            <div className="rounded-[18px] border border-black/10 bg-white p-3">
               <div className="mb-2 flex items-center justify-between">
                 <h2 className="text-[14px] font-black text-zinc-900">Main Schdule</h2>
-                <button type="button" className="text-[14px] font-semibold text-zinc-700">
-                  +
-                </button>
+                <div className="flex items-center gap-3">
+                  <button type="button" className="text-[14px] font-semibold text-zinc-700">
+                    전체보기
+                  </button>
+                  <button type="button" className="text-[18px] font-semibold text-zinc-700">
+                    +
+                  </button>
+                </div>
               </div>
               <ul className="space-y-2">
                 {scheduleCards.map((item) => (
                   <li key={item.title}>
-                    <Link href={item.href} className="block rounded-[14px] border border-[#c9c5f3] bg-[#EEEDFE] px-2 py-2">
-                      <div className="flex items-start justify-between gap-1">
-                        <p className="text-[16px] leading-5 font-medium text-zinc-900">{item.title}</p>
-                        <span className="text-[12px] leading-4 font-medium text-zinc-900">{item.xp}</span>
+                    <Link href={item.href} className="block rounded-[14px] border border-[#c9c5f3] bg-[#EEEDFE] px-3 py-3">
+                      <div className="flex items-start justify-between gap-2">
+                        <p className="line-clamp-1 text-[16px] leading-5 font-medium text-zinc-900">{item.title}</p>
+                        <span className="rounded-full bg-[#f3f3f3] px-2 py-1 text-[12px] leading-3 font-medium text-zinc-900">{item.xp}</span>
                       </div>
-                      <div className="mt-1 flex items-center justify-between">
-                        <span className="text-[12px] leading-4 font-medium text-[#7F77DD]">{item.tag}</span>
+                      <div className="mt-2 flex items-center justify-between">
+                        <span className="rounded-[8px] bg-[#e4d8ff] px-2 py-0.5 text-[12px] leading-4 font-medium text-[#6b46c1]">{item.tag}</span>
                         <span className="text-[12px] leading-4 font-semibold text-red-600">{item.ago}</span>
                       </div>
                     </Link>
@@ -255,12 +504,13 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
-            <div>
+          ) : (
+            <div className="rounded-[18px] border border-black/10 bg-white p-3">
               <h2 className="mb-2 text-[14px] font-black text-zinc-900">Daily Quest</h2>
               <ul className="space-y-2">
                 {quests.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="flex items-center justify-between rounded-[14px] border border-[#c9c5f3] bg-[#EEEDFE] px-2 py-2">
+                    <Link href={item.href} className="flex items-center justify-between rounded-[14px] border border-[#c9c5f3] bg-[#EEEDFE] px-3 py-2.5">
                       <span className="text-[16px] leading-5 font-medium text-zinc-900">{item.label}</span>
                       <span className="text-[10px] leading-4 font-medium text-zinc-500">{item.point}</span>
                     </Link>
@@ -268,7 +518,7 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
-          </div>
+          )}
         </section>
 
         <section className="px-4 pb-4">
@@ -290,7 +540,7 @@ export default function HomePage() {
                     <Link
                       key={`${section.title}-${card.title}`}
                       href="/jobs"
-                      className="min-w-[235px] snap-start rounded-[14px] bg-white p-3 shadow-sm"
+                      className="relative min-h-[142px] min-w-[235px] snap-start rounded-[14px] bg-white p-3 pb-9 shadow-sm"
                     >
                       <div className="flex gap-2">
                         <div className="h-[52px] w-[82px] overflow-hidden rounded-[8px] border border-zinc-200 bg-white">
@@ -304,12 +554,12 @@ export default function HomePage() {
                           ) : null}
                         </div>
                       </div>
-                      <div className="mt-2 flex items-center justify-between">
-                        <div className="flex items-center gap-1">
-                          <span className={`rounded-[8px] px-2 py-0.5 text-[12px] text-white ${card.badgeColor}`}>{card.badge}</span>
-                        </div>
-                        <span className="text-[12px] font-medium text-[#6a7282]">{card.dday}</span>
-                      </div>
+                      {section.plainBadge ? (
+                        <span className="absolute bottom-3 left-3 text-[12px] font-medium text-[#4a5565]">{card.badge}</span>
+                      ) : (
+                        <span className={`absolute bottom-3 left-3 rounded-[8px] px-2 py-0.5 text-[12px] text-white ${card.badgeColor}`}>{card.badge}</span>
+                      )}
+                      <span className="absolute bottom-3 right-3 text-[12px] font-medium text-[#6a7282]">{card.dday}</span>
                     </Link>
                   ))}
                 </div>
@@ -319,7 +569,36 @@ export default function HomePage() {
         </section>
 
         <section className="px-4 pb-24">
-          <h2 className="mb-2 text-[20px] leading-6 font-black text-zinc-900">핫게시글</h2>
+          <h2 className="text-[20px] leading-6 font-black text-zinc-900">커뮤니티</h2>
+          <div className="mt-4">
+            <h3 className="mb-2 flex items-center gap-1 text-[16px] font-bold text-zinc-900">
+              <span className="text-[#ff5a77]">🔥</span>
+              <span>고스펙 유저</span>
+            </h3>
+            <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              {topUsers.map((user) => (
+                <article
+                  key={user.name}
+                  className="relative min-w-[150px] snap-start rounded-[20px] bg-gradient-to-b from-[#ff8a1d] to-[#f55bb1] p-3 text-white shadow-[0_8px_18px_rgba(15,23,42,0.16)]"
+                >
+                  <div className="absolute right-0 top-0 h-14 w-14 rounded-bl-[24px] rounded-tr-[20px] bg-[radial-gradient(circle_at_top_right,_rgba(255,173,64,0.75),_rgba(255,173,64,0)_70%)]" />
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="h-[88px] w-[88px] overflow-hidden rounded-[4px] border border-white/20 bg-[#fff8ea]">
+                      <img src={user.image} alt={`${user.name} 캐릭터`} className="h-full w-full object-cover" />
+                    </div>
+                    <p className="mt-2 text-[18px] leading-5 font-extrabold">{user.name}</p>
+                    <span className="mt-2 rounded-full bg-white/25 px-4 py-1 text-[16px] leading-5 font-bold">+{user.xp}xp</span>
+                    <span className="mt-2 rounded-full bg-white px-3 py-0.5 text-[18px] leading-6 font-black text-[#f09218]">#{user.rank}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <h3 className="mb-2 mt-4 flex items-center gap-1 text-[18px] leading-6 font-black text-zinc-900">
+            <span className="text-[#ff5a77]">🔥</span>
+            <span>핫게시글</span>
+          </h3>
           <div className="rounded-[14px] border border-black/10 bg-white">
             {hotPosts.map((post, index) => (
               <Link key={post.title} href="/community/ranking" className="flex items-center justify-between border-b border-zinc-100 px-3 py-2.5 last:border-b-0">
@@ -342,19 +621,24 @@ export default function HomePage() {
           </div>
         </section>
 
-        <nav className="fixed bottom-0 left-1/2 w-full max-w-[390px] -translate-x-1/2 border-t border-[#e5e7eb] bg-white">
-          <ul className="grid grid-cols-5 px-2 py-1">
+        <nav className="fixed bottom-0 left-1/2 z-[100] h-[98px] w-full max-w-[390px] -translate-x-1/2 border-t border-[#e5e7eb] bg-white shadow-[0_-6px_20px_rgba(15,23,42,0.08)]">
+          <ul className="grid h-full grid-cols-5 px-2">
             {bottomNav.map((item) => (
-              <li key={item.label} className="text-center">
-                <Link
-                  href={item.href}
-                  className={`inline-flex w-full flex-col items-center rounded-xl px-1 py-2 text-[11px] ${
-                    item.label === "홈" ? "font-semibold text-[#534AB7]" : "text-[#4a5565]"
-                  }`}
-                >
-                  <span className={`text-base ${item.label === "홈" ? "scale-125" : ""}`}>{item.icon}</span>
-                  <span className="mt-1 text-[12px] leading-none">{item.label}</span>
-                </Link>
+              <li key={item.label} className="flex items-center justify-center text-center">
+                <button type="button" onClick={() => setSelectedTab(item.id)} className="inline-flex h-full w-full flex-col items-center justify-center gap-1 pb-2 pt-1 rounded-xl px-1">
+                  <span className="grid h-[60px] place-items-center">
+                    {item.id === "home" ? (
+                      <span className="grid h-[60px] w-[60px] place-items-center rounded-full bg-[#7F77DD] text-white shadow-[0_10px_22px_rgba(15,23,42,0.25)]">
+                        {renderBottomTabIcon(item.id)}
+                      </span>
+                    ) : (
+                      <span className={`${selectedTab === item.id ? "text-[#7F77DD]" : "text-[#4b5565]"}`}>{renderBottomTabIcon(item.id)}</span>
+                    )}
+                  </span>
+                  <span className={`block h-[14px] whitespace-nowrap text-[12px] leading-[12px] font-semibold ${item.id === "home" || selectedTab === item.id ? "text-[#7F77DD]" : "text-[#4b5565]"}`}>
+                    {item.label}
+                  </span>
+                </button>
               </li>
             ))}
           </ul>
